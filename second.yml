@@ -1,0 +1,31 @@
+---
+- name: sample playbook with handlers
+  hosts: ansible_servers
+  become: true
+
+  handlers:
+    - name: restart apache
+      service: 
+            name: apache2
+            state: restarted
+
+  tasks:
+    - name: Install httpd package
+      yum: 
+          name: apache2
+          state: latest
+    - name: Copy test config file
+      copy: 
+          src: test.conf
+          dest: /etc/apache2/conf-enabled/test.conf
+      notify: restart apache
+
+    - name: run apache2 service
+      service: 
+          name: apache2
+          state: started
+    - name: create contents
+      copy:
+          src: index.html
+          dest: /var/www/html/index.html
+        
