@@ -1,6 +1,6 @@
 ---
 - name: sample playbook with handlers
-  hosts: ansible_servers
+  hosts: newservers
   become: true
 
   handlers:

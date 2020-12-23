@@ -3,11 +3,17 @@
   hosts: ansible_servers
   become: true
 
+
   handlers:
+    - name: another handler
+      service:
+            name: ufw
+            state: stopped
     - name: restart apache
       service: 
             name: apache2
             state: restarted
+      notify: another handler
 
   tasks:
     - name: Install httpd package
