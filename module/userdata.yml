@@ -1,0 +1,8 @@
+---
+ - name: Test Application Data
+   hosts: redhatservers
+   tasks: 
+   - name: Sample Task
+     userdata: 
+       name: Demo User
+       code: 101

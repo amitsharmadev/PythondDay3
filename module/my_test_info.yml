@@ -1,0 +1,9 @@
+---
+- name: Sample Play book
+  hosts: newservers
+  become: true
+
+  tasks:
+   - name: First Task
+     my_test_info:
+        name: Prince
